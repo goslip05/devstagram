@@ -15,12 +15,24 @@
                 <h1 class="text-3xl font-black">
                     Devstagram
                 </h1>
-                <nav>
-                    <a href="#">Login</a>
-                    <a href="#">Crear Cuenta</a>
+                <nav class="flex items-center gap-2" >
+                    <a class="text-sm font-bold text-gray-600 uppercase" href="#">Login</a>
+                    <a class="text-sm font-bold text-gray-600 uppercase" href="/crear-cuenta">Crear Cuenta</a>
                 </nav>
             </div>
         </header>
+
+        <main class="container mx-auto mt-10">  
+            <h2 class="mb-10 text-3xl font-black text-center">
+                @yield('titulo')
+            </h2>
+            @yield('contenido') 
+        </main> 
+
+        <footer class="p-5 font-bold text-center text-gray-500 uppercase">
+            Devstagram - Todos los derechos reservados 
+            {{now()->year}}
+        </footer>
     
     
     

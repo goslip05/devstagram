@@ -6,9 +6,8 @@
 
 @endsection
 
-
 @section('contenido')
 
+    contenido de la pagina
 
-    
 @endsection

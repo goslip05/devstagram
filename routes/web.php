@@ -17,14 +17,8 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/nosotros', function () {
-    return view('nosotros');
+Route::get('/crear-cuenta', function () {
+    return view('auth.register');
 });
 
-Route::get('/tienda', function () {
-    return view('tienda');
-});
 
-Route::get('/contacto', function () {
-    return view('contacto');
-});
