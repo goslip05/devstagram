@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}>
+        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
         <title>Devstagram - @yield('titulo')</title>
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}"></script>
         @vite('resources/css/app.css')
         
     </head>
@@ -18,7 +18,7 @@
                 </h1>
                 <nav class="flex items-center gap-2" >
                     <a class="text-sm font-bold text-gray-600 uppercase" href="#">Login</a>
-                    <a class="text-sm font-bold text-gray-600 uppercase" href="/crear-cuenta">Crear Cuenta</a>
+                    <a class="text-sm font-bold text-gray-600 uppercase" href="{{route('register')}}">Crear Cuenta</a>
                 </nav>
             </div>
         </header>
