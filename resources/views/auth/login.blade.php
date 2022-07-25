@@ -37,6 +37,10 @@
                     <p class="p-2 my-2 text-sm text-center text-white bg-red-500 rounded-lg white">{{$message}}</p>   
                     @enderror
                 </div>
+                
+                <div class="mb-5">
+                    <input type="checkbox" name="remember"> <label class="text-sm text-gray-500"> Mantener mi sesión abierta</label>
+                </div>
               
                 <input type="submit" value="Iniciar Sesión" class="w-full p-3 font-bold text-white uppercase transition-colors rounded-lg cursor-pointer bg-sky-600 hover:bg-sky-700">
             </form>
