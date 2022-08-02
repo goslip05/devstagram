@@ -16,7 +16,22 @@
             <div class="w-8/12 px-5 lg:w-6/12">
                 <p><img src="{{ asset('img/usuario.svg') }}" alt="imagen de usuario"></p></div>
             <div class="flex flex-col items-center px-5 py-10 md:w-8/12 lg:w-6/12 md:justify-center md:py-10 md:items-start">
-                <p class="text-2xl text-gray-700"> {{ $user->username }}</p>
+                
+                <div class="flex items-center gap-2">    
+                    <p class="text-2xl text-gray-700"> {{ $user->username }}</p>
+                    @auth
+                    @if ($user->id === auth()->user()->id )
+                        <a href="" class="text-gray-500 cursor-pointer hover:text-gray-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </a>
+                    @else
+                        
+                    @endif
+                    @endauth
+                </div>
+                
                 <p class="mt-5 mb-3 text-sm font-bold text-gray-800">0
                 <span class="font-normal">Seguidores</span>
                 </p>
