@@ -17,9 +17,9 @@
         <header class="p-5 bg-white border-b shadow">
             
             <div class="container flex items-center justify-between mx-auto">
-                <h1 class="text-3xl font-black">
+                <a class="text-3xl font-black" href="{{ route('home') }}">
                     Devstagram
-                </h1>
+                </a>
 
                 {{-- metodo para verificar si el usuario esta autenticado
                 @if (auth()->user())

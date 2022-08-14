@@ -29,21 +29,37 @@
                                 <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                             </svg>
                         </a>
-                    @else
-                        
                     @endif
                     @endauth
+                    
                 </div>
                 
-                <p class="mt-5 mb-3 text-sm font-bold text-gray-800">0
-                <span class="font-normal">Seguidores</span>
+                <p class="mt-5 mb-3 text-sm font-bold text-gray-800">{{ $user->followers->count() }}
+                <span class="font-normal">@choice('Seguidor|Seguidores', $user->followers->count())</span>
                 </p>
-                <p class="mb-3 text-sm font-bold text-gray-800">0
-                <span class="font-normal">Siguiendo</span>
+                <p class="mb-3 text-sm font-bold text-gray-800">{{ $user->followings->count() }}
+                    <span class="font-normal">Siguiendo</span>
                 </p>
                 <p class="mb-3 text-sm font-bold text-gray-800">{{ $user->posts->count() }}
                 <span class="font-normal">Posts</span>
                 </p>
+
+                @auth
+                    @if ($user->id !== auth()->user()->id)
+                        @if(!$user->siguiendo(auth()->user()))
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input type="submit" class="px-3 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-lg cursor-pointer" value="Seguir">
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="px-3 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-lg cursor-pointer" value="Dejar de Seguir">
+                            </form>
+                        @endif
+                    @endif
+                @endauth
             </div>
             
         </div>
@@ -52,29 +68,7 @@
 
     <section class="container mx-auto mt-10 ">
         <h2 class="my-10 text-4xl font-black text-center ">Publicaciones</h2>
-        
-        @if ($posts->count())
-        
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            @foreach ($posts as $post)
-                <div>
-                    <a href="{{ route('posts.show', ['post'=>$post, 'user'=>$user]) }}">
-                        <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del post" {{$post->titulo}}>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-
-        <div class="my-10">
-            {{$posts->links()}}
-        </div>
-        
-
-        @else
-            <p class="text-sm font-bold text-center text-gray-600 uppercase">No hay posts</p>
-
-
-        @endif
+        <x-listar-post :posts="$posts"/>
     </section>
 
 @endsection
